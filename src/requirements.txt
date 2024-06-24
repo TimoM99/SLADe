@@ -1,0 +1,5 @@
+anomatools>=3.0.3
+numpy>=1.24.3
+pyod>=2.0.1
+scikit_learn>=1.3.0
+scipy>=1.13.1
