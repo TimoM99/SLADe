@@ -50,6 +50,7 @@ SLADe requires the following packages:
 - [PyOD](https://pyod.readthedocs.io/en/latest/index.html)
 - [SciPy](https://scipy.org/)
 - [NumPy](https://numpy.org/doc/stable/index.html)
+- [Anomatools](https://github.com/Vincent-Vercruyssen/anomatools)
 
 ## Contact
 Feedback for improvement of the code or documentation is appreciated. My inbox is also open for any questions!
