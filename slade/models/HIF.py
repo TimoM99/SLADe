@@ -3,7 +3,7 @@ import random as rn
 import math
 from collections import Counter
 from multiprocessing import Pool
-from src.helper_files.Exceed import ExCeeD
+from slade.helper_files.Exceed import ExCeeD
 
 class HIF:
     """
