@@ -5,6 +5,13 @@ __pycache__/
 
 # Notebooks
 *.ipynb
+# zips
+*.zip
+# ppt
+*.pptx
+# Specific
+Timo_Martens_Semi_supervised_learning_from_active_noisy_soft_labels_for_anomaly_detection.pdf
+ECML_submission/
 # C extensions
 *.so
 
