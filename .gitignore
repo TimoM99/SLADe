@@ -10,8 +10,8 @@ __pycache__/
 # ppt
 *.pptx
 # Specific
-Timo_Martens_Semi_supervised_learning_from_active_noisy_soft_labels_for_anomaly_detection.pdf
 ECML_submission/
+ECML_presentation/
 # C extensions
 *.so
 
