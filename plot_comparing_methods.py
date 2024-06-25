@@ -9,7 +9,7 @@ import matplotlib as mpl
 mpl.rcParams['text.usetex'] = True
 mpl.rcParams['text.latex.preamble'] = [r'\usepackage{amsmath}']
 
-from helper_files.utils import subplots_centered
+from utils import subplots_centered
 
 parser = argparse.ArgumentParser()
 # Which folder are the CSV results in?

@@ -33,6 +33,7 @@ class GP:
         """
         self.random_state = random_state
         self.gp = None
+        np.random.seed(random_state)
 
     def fit(self, X, y, source_p):
         """

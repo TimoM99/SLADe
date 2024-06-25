@@ -19,11 +19,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score
 from multiprocessing import Process
 
-from models.SLADe import SLADe
-from models.GP import GP
-from models.SSDO import SSDO
-from models.HIF import HIF
-from models.PSVM import PSVM
+from slade.models.SLADe import SLADe
+from slade.models.GP import GP
+from slade.models.SSDO import SSDO
+from slade.models.HIF import HIF
+from slade.models.PSVM import PSVM
 
 import warnings
 warnings.filterwarnings("ignore")
@@ -194,6 +194,8 @@ def experiment(dataset, noise_pct, N_RANDOM_STATE, N_SAMPLES, LABEL_BUDGET, SAMP
                 for k in models:
                     models[k].sample(X_train, n_samples, y_train, labeled_data[k])
                     models[k].fit(X_train, labeled_data[k], p_train)
+                    if sample_i == 1 and k =='SLADe':
+                        print(models[k].predict_proba(X_test)[:, 1])
                     r.append(roc_auc_score(y_test, models[k].predict_proba(X_test)[:, 1]))
             results.writerow(r)
             file.flush()
@@ -230,5 +232,3 @@ if __name__ == "__main__":
         proc.join()
                 
                 
-
-

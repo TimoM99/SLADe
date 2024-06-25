@@ -18,13 +18,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import roc_auc_score
 from pyod.models import lof, iforest, knn, ocsvm
 
-from models.SLADe import SLADe
+from slade.models.SLADe import SLADe
 
 import warnings
 warnings.filterwarnings("ignore")
 
-def experiment(dataset, noise_pct, hyperparameter, N_RANDOM_STATE, N_SAMPLES, LABEL_BUDGET, SAMPLE_SIZE):
+# Setting the number of GP optimizer restarts larger than 0 introduces randomness in different runs of the experiment.
 
+def experiment(dataset, noise_pct, hyperparameter, N_RANDOM_STATE, N_SAMPLES, LABEL_BUDGET, SAMPLE_SIZE):
     dataset_name = dataset.split('/')[1].split('_')[0]
     ### Open CSV file
     if not os.path.exists('scores/varying_hyperparameter/{}/'.format(hyperparameter)):

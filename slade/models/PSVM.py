@@ -5,6 +5,7 @@ class PSVM:
     def __init__(self, random_state) -> None:
         self.svm = None
         self.random_state = random_state
+        np.random.seed(random_state)
 
     def fit(self, X, y, source_p):
         """

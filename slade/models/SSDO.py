@@ -40,6 +40,7 @@ class SSDO:
         self.ssdo = None
         self.random_state = random_state
         self.contamination_factor = contamination_factor
+        np.random.seed(random_state)
 
     # parameter p is not used, but used for consistency with other models.
     def fit(self, X, y, source_p):

@@ -41,6 +41,9 @@ class HIF:
         self.hif = None
         self.random_state = random_state
         self.c = contamination_factor
+        np.random.seed(random_state)
+        rn.seed(random_state)
+
 
     # Parameter source_p is not used, but used for consistency with other models
     def fit(self, X, y, source_p):

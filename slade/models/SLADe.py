@@ -5,6 +5,7 @@ from scipy.spatial.distance import cdist
 import numpy as np
 import math
 
+# Setting the number of GP optimizer restarts larger than 0 introduces randomness in different runs of the experiments.
 
 class SLADe:
     """
@@ -52,14 +53,16 @@ class SLADe:
         nu : float
             The Matern kernel hyperparameter: choose from 1/2, 3/2, 5/2 for optimal algorithm speed.
         """
+        np.random.seed(random_state)
         if unsupervised_model == None:
-            self.prior_model = IForest(contamination=contamination_factor)
+            self.prior_model = IForest(contamination=contamination_factor, random_state=random_state)
         else:
             self.prior_model = unsupervised_model
         self.nu = nu
         self.q = q
         self.random_state = random_state
         self.gp = None
+        
         
 
     def fit(self, X, y, source_p):
@@ -85,6 +88,7 @@ class SLADe:
         if len(labeled_X) > 0:
             train_scores = source_p[y != 0] - prior[y != 0] # Calculate the deviation for the acquired soft labels so far.
             kernel = Matern(length_scale=0.01, length_scale_bounds=[0.00001, 10000], nu=self.nu)
+            # Setting the number of optimizer restarts larger than 0 introduces randomness in different runs of the experiment.
             self.gp = GaussianProcessRegressor(kernel, n_restarts_optimizer=20, random_state=self.random_state, normalize_y=False)
             self.gp.fit(labeled_X, train_scores)
 
@@ -183,6 +187,4 @@ class SLADe:
         lowest_scores_index = [x for _, x in sorted(list(zip(scores, np.where(y == 0)[0])), key=lambda x: x[0])][:n_samples]
             
         y[lowest_scores_index] = source_labels[lowest_scores_index]
-
-
 

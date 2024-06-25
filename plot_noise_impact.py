@@ -1,7 +1,6 @@
 import csv
 import os
 import itertools
-import argparse
 from matplotlib import patches
 
 
